@@ -76,31 +76,3 @@ const Chat = ({ chat }: ChatProps) => {
 	);
 };
 export default Chat;
-
-// STARTER CODE FOR THIS FILE. TimeStamp to paste this code => 02:39:13
-{
-	/* <Link href={`/chat/${userToChat?._id}`}>
-<li className='flex items-center p-2  bg-sigSurface hover:bg-sigBackgroundFeedHover cursor-pointer border-b border-b-sigColorBgBorder'>
-  <Avatar className='w-14 h-14 bg-black'>
-    <AvatarImage
-      src={
-        userToChat?.avatar ||
-        "https://questhowth.ie/wp-content/uploads/2018/04/user-placeholder.png"
-      }
-    />
-  </Avatar>
-
-  <div className='ml-3'>
-    <p>{userToChat?.fullName}</p>
-  </div>
-  <Image
-    src={"/camera.svg"}
-    height={0}
-    width={0}
-    style={{ width: "20px", height: "auto" }}
-    className='ml-auto hover:scale-95 '
-    alt='Camera Icon'
-  />
-</li>
-</Link> */
-}

@@ -95,19 +95,19 @@ const ChatMessages = ({ messages, session }: ChatMessagesProps) => {
 								{isMessageImage ? (
 									<div className='relative'>
 										<Image
-											src={message.content}
+											src={message.content.secureUrl}
 											width={200}
 											height={200}
 											className='h-auto w-auto object-cover cursor-pointer'
 											alt='Image'
 											onLoad={handleImageLoad}
 											onClick={() =>
-												setIsPreviewingImage({ open: true, imgURL: message.content })
+												setIsPreviewingImage({ open: true, imgURL: message.content.secureUrl })
 											}
 										/>
 									</div>
 								) : (
-									<p className='text-sm'>{message.content}</p>
+									<p className='text-sm'>{message.content.text}</p>
 								)}
 							</div>
 						</div>
