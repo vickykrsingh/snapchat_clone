@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import LogoutButton from "./logout-button";
 import { auth } from "@/auth";
 import { Bell } from "lucide-react";
+import NavbarSmPopover from "./navbar-sm-popover";
 
 const Navbar = async ({bgColor,textColor}:{bgColor:string,textColor:string}) => {
 	const session = await auth();
@@ -21,6 +22,7 @@ const Navbar = async ({bgColor,textColor}:{bgColor:string,textColor:string}) => 
 					<Link href={"/"}> Home</Link>
 				</Button>
 			</div>
+			<NavbarSmPopover/>
 			<div className='flex space-x-2'>
 				{!session && (
 					<Button asChild className={`bg-black text-white rounded-full p-3 text-xs md:text-sm`}>

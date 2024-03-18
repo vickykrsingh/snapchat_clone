@@ -7,11 +7,12 @@ import Chats from "./chats";
 import { Suspense } from "react";
 import { ChatsSkeleton } from "../skeletons/chats-skeletons";
 import Link from "next/link";
+import ChatCamera from "./chat-camera";
 
 const ChatSideBar = async () => {
 	const session = await auth();
 	return (
-		<aside className='flex-[1_1_0%] lg:flex flex-col bg-black text-white hidden'>
+		<aside className='flex-[1_1_0%] flex flex-col bg-black text-white'>
 			<div className='sticky top-0 bg-black z-50'>
 				<div className='flex items-center justify-between p-4 border-b border-gray-800 '>
 					<div className='relative'>
@@ -19,12 +20,13 @@ const ChatSideBar = async () => {
 							<AvatarImage src={session?.user?.image!} />
 						</Avatar>
 					</div>
-					<Button className='bg-sigButton hover:bg-sigButtonHover text-white rounded-full h-8 w-8 relative p-2'>
+					<ChatCamera/>
+					<Button className='bg-sigButton hover:bg-sigButtonHover text-white rounded-full h-10 w-10 relative p-2'>
 						<Link href="/search" >
-							<UserPlus className="bg-transparent" size={'20'} />
+							<UserPlus className="bg-transparent" size={'24'} />
 						</Link>
 					</Button>
-					<LogoutButton />
+					{/* <LogoutButton /> */}
 				</div>
 				<div className='p-4 '>
 					<div className=' text-gray-400 p-1  flex gap-2 rounded-full bg-sigSurface border border-sigColorBgBorder'>

@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useRef, useState } from "react";
 import ImagePreviewDialog from "./image-preview-dialog";
 import SelectUserDialog from "./select-user-dialog";
+import { Camera } from "lucide-react";
 
 const ChatCamera = () => {
 	const imgRef = useRef<HTMLInputElement>(null);
@@ -25,23 +26,23 @@ const ChatCamera = () => {
 
 	return (
 		<>
-			<div className='aspect-[9/16] flex flex-col items-center justify-center h-[80%] bg-black rounded-md bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-10 border border-sigColorBgBorder mx-auto lg:mx-0'>
+			<div className=''>
 				<div
-					className='rounded-full p-8 bg-white-800 bg-clip-padding backdrop-filter backdrop-blur-xl bg-opacity-30 border border-gray-100 cursor-pointer'
+					className='cursor-pointer'
 					onClick={() => imgRef.current!.click()}
 				>
 					<Image
 						src={"/camera.svg"}
 						height={0}
 						width={0}
-						style={{ width: "150px", height: "auto" }}
-						className='hover:opacity-90'
+						style={{ width: "35px", height: "auto" }}
+						className='ml-auto hover:scale-95 '
 						alt='Camera Icon'
 					/>
+					{/* <Camera/> */}
 
 					<input type='file' accept='image/*' hidden ref={imgRef} onChange={handleFileChange} />
 				</div>
-				<p className='w-2/3 text-center text-white mt-4 font-semibold'>Click the Camera to send your Code.</p>
 			</div>
 			{step === 0 ? (
 				<ImagePreviewDialog
