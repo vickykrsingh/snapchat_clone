@@ -8,8 +8,8 @@ export default async function Home() {
 	const session = await auth();
 	return (
 		<div className='bg-[#fffc00]'>
-			<div className='min-h-screen flex flex-col items-center justify-center max-w-7xl mx-auto'>
-				<Navbar />
+			<Navbar bgColor="bg-[#fffc00]" textColor="text-black" />
+			<div className='min-h-[90vh] flex flex-col items-center justify-center max-w-7xl mx-auto'>
 				<main className='flex flex-1 flex-col md:flex-row items-center justify-center px-8 mt-4'>
 					<div className='flex-1 md:text-left text-center h-full'>
 						<h1 className='text-4xl md:text-6xl font-bold'>SnapNext 4 programmers!</h1>

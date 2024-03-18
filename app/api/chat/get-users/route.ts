@@ -1,6 +1,6 @@
 import { auth } from "@/auth";
 import { connectToMongoDB } from "@/lib/db";
-import User, { IUserDocument } from "@/models/userModel";
+import User from "@/models/userModel";
 import { NextResponse } from "next/server";
 
 export const GET = async () => {
@@ -9,12 +9,16 @@ export const GET = async () => {
 		if (!session) return;
 		await connectToMongoDB();
 
-		const users: IUserDocument[] = await User.find();
-		// Filter the authenticated user from the list
-		const filteredUsers = users.filter((user) => user._id.toString() !== session.user._id.toString());
+		const users = await User.findById(session.user._id).populate('friends').exec();
+		const friends = users?.friends
+		let filteredUsers;
+		if(friends && friends.length>0){
+			filteredUsers = friends.filter((user) => user._id.toString() !== session.user._id.toString());
+		}else{
+			filteredUsers=[]
+		}
 		return NextResponse.json(filteredUsers);
 	} catch (error) {
-		console.log("Error in get-users route handler", error);
 		throw error;
 	}
 };

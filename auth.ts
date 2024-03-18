@@ -27,7 +27,6 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
 					throw new Error("Invalid session");
 				}
 			} catch (error) {
-				console.log(error);
 				throw new Error("Invalid session");
 			}
 		},
@@ -51,7 +50,6 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
 					}
 					return true; // indicate successful sign-in
 				} catch (error) {
-					console.log(error);
 					return false; // indicate failed sign-in
 				}
 			}

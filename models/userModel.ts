@@ -1,10 +1,13 @@
-import mongoose, { Document, Model } from "mongoose";
+import mongoose, { Document, Model, PopulatedDoc, Types } from "mongoose";
 
 export interface IUser {
 	username: string;
 	fullName: string;
 	email: string;
 	avatar?: string;
+	friends:Types.ObjectId[]|PopulatedDoc<IUserDocument>[],
+	sentRequests:Types.ObjectId[]|PopulatedDoc<IUserDocument>[],
+	recievedRequests:Types.ObjectId[]|PopulatedDoc<IUserDocument>[]
 }
 
 export interface IUserDocument extends IUser, Document {
@@ -32,6 +35,24 @@ const userSchema = new mongoose.Schema<IUserDocument>(
 			type: String,
 			default: "",
 		},
+		friends:[
+			{
+				type:mongoose.Schema.Types.ObjectId,
+				ref:"User",
+			}
+		],
+		sentRequests:[
+			{
+				type:mongoose.Schema.Types.ObjectId,
+				ref:"User",
+			}
+		],
+		recievedRequests:[
+			{
+				type:mongoose.Schema.Types.ObjectId,
+				ref:"User"
+			}
+		]
 	},
 	{
 		// createdAt, updatedAt

@@ -3,12 +3,15 @@ import Image from "next/image";
 import { Avatar, AvatarImage } from "../ui/avatar";
 import { formatDate } from "@/lib/utils";
 import { ImageMessageSvg, TextMessageSent, TextMessageSvgReceived } from "../svgs/chatSvg";
+import { UserPlus } from 'lucide-react'
 
 type ChatProps = {
 	chat: any;
 };
 
 const Chat = ({ chat }: ChatProps) => {
+	// Todo check friend or not functionality
+	const friend = false;
 	const userToChat = chat.participants[0];
 	const lastMessage = chat.lastMessage;
 	const lastMessageType = lastMessage?.messageType;
@@ -63,14 +66,18 @@ const Chat = ({ chat }: ChatProps) => {
 						{messageStatus} - {formattedDate}
 					</p>
 				</div>
-				<Image
-					src={"/camera.svg"}
-					height={0}
-					width={0}
-					style={{ width: "20px", height: "auto" }}
-					className='ml-auto hover:scale-95 '
-					alt='Camera Icon'
-				/>
+				{
+
+					<Image
+						src={"/camera.svg"}
+						height={0}
+						width={0}
+						style={{ width: "20px", height: "auto" }}
+						className='ml-auto hover:scale-95 '
+						alt='Camera Icon'
+					/>
+
+				}
 			</li>
 		</Link>
 	);

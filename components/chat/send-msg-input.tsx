@@ -22,7 +22,7 @@ const SendMsgInput = () => {
 			await sendMessageAction(receiverId, messageContent, "text");
 			setMessageContent("");
 		} catch (error) {
-			console.log(error);
+			throw error
 		} finally {
 			setIsLoading(false);
 		}

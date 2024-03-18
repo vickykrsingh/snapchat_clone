@@ -30,7 +30,6 @@ export function EmojiPopover() {
 			const dataUrl = await readFileAsDataURL(blob);
 			await sendMessageAction(id, dataUrl, "image");
 		} catch (error) {
-			console.error("Error from sending emoji function", error);
 		} finally {
 			setIsLoading(false);
 		}

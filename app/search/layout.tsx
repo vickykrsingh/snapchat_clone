@@ -6,7 +6,6 @@ const Layout = ({ children }: React.PropsWithChildren) => {
 		<>
 			<Navbar bgColor="bg-black" textColor="text-white" />
 			<main className='flex h-[90vh]'>
-				<ChatSideBar />
 				{children}
 			</main>
 		</>

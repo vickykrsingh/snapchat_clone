@@ -1,17 +1,17 @@
-import { SearchIcon } from "lucide-react";
+import { SearchIcon, UserPlus } from "lucide-react";
 import LogoutButton from "../shared/logout-button";
 import { Avatar, AvatarImage } from "../ui/avatar";
 import { Button } from "../ui/button";
-import Image from "next/image";
 import { auth } from "@/auth";
 import Chats from "./chats";
 import { Suspense } from "react";
 import { ChatsSkeleton } from "../skeletons/chats-skeletons";
+import Link from "next/link";
 
 const ChatSideBar = async () => {
 	const session = await auth();
 	return (
-		<aside className='flex-[1_1_0%] flex flex-col bg-black text-white'>
+		<aside className='flex-[1_1_0%] lg:flex flex-col bg-black text-white hidden'>
 			<div className='sticky top-0 bg-black z-50'>
 				<div className='flex items-center justify-between p-4 border-b border-gray-800 '>
 					<div className='relative'>
@@ -20,7 +20,9 @@ const ChatSideBar = async () => {
 						</Avatar>
 					</div>
 					<Button className='bg-sigButton hover:bg-sigButtonHover text-white rounded-full h-8 w-8 relative p-2'>
-						<Image src={"/chat.svg"} fill alt='Chat icon' />
+						<Link href="/search" >
+							<UserPlus className="bg-transparent" size={'20'} />
+						</Link>
 					</Button>
 					<LogoutButton />
 				</div>
